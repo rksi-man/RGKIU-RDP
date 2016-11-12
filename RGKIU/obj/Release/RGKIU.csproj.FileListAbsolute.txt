@@ -1,0 +1,14 @@
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING\RGKIU\obj\Release\RGKIU.csprojResolveAssemblyReference.cache
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING\RGKIU\obj\Release\Interop.MSTSCLib.dll
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING\RGKIU\obj\Release\AxInterop.MSTSCLib.dll
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING\RGKIU\obj\Release\RGKIU.csproj.ResolveComReference.cache
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING\RGKIU\obj\Release\RDP.Form1.resources
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING\RGKIU\obj\Release\RGKIU_VCH.Properties.Resources.resources
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING\RGKIU\obj\Release\RGKIU.csproj.GenerateResource.Cache
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING\RGKIU\bin\Release\VPN+RDP.exe.config
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING\RGKIU\bin\Release\VPN+RDP.exe
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING\RGKIU\bin\Release\VPN+RDP.pdb
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING\RGKIU\bin\Release\Interop.MSTSCLib.dll
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING\RGKIU\bin\Release\AxInterop.MSTSCLib.dll
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING\RGKIU\obj\Release\VPN+RDP.exe
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING\RGKIU\obj\Release\VPN+RDP.pdb
