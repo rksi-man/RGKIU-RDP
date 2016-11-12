@@ -259,7 +259,7 @@ namespace RDP
                         {
                             MySqlConnection conn_sp = new MySqlConnection(connStr);
                             conn_sp.Open();
-
+                            //прерывание. ошибка
                             //MySqlCommand FAM = new MySqlCommand("SELECT FAM FROM dpo.users_dpo;", conn_sp);
                             //MySqlDataReader comb = FAM.ExecuteReader();
 
