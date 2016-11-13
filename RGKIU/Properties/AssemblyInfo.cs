@@ -6,10 +6,10 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("VPN+RDP")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("RDP клиент")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Kalambet Networking")]
-[assembly: AssemblyProduct("RGKIU")]
+[assembly: AssemblyProduct("RGKIU-RDP")]
 [assembly: AssemblyCopyright("Copyright © Kalambet 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -29,5 +29,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("0.0.25.1")]
-[assembly: AssemblyFileVersion("0.0.0.0")]
+[assembly: AssemblyVersion("0.1.0.1")]
+[assembly: AssemblyFileVersion("0.1.0.1")]

@@ -12,6 +12,7 @@ using System.IO;
 using MySql.Data.MySqlClient;
 using System.Net;
 using System.Threading;
+using System.Runtime.InteropServices;
 
 namespace RDP
 {
@@ -22,12 +23,23 @@ namespace RDP
         IPStatus status_global = IPStatus.TimedOut;
         IPStatus status_local = IPStatus.TimedOut;
         Rectangle screenSize = System.Windows.Forms.Screen.PrimaryScreen.Bounds;
-        string connStr = "server=" + "10.10.101.101" + ";user=" + "mysql_user" + ";database=" + "dpo" + ";port=" + "3306" + ";password=" + "208406" + ";";
+
+        //Переменные для MySQL
+        string global_ping = @"ya.ru"; //Для пинга на ВЦ
+        //string global_ping = @"127.0.0.1"; //Для пинга на ВЦ
+        /////////////////////////////////////////////////////////////////////
+        string ServMySQL = @"10.10.101.101"; //Для пинга на ВЦ
+        //string ServMySQL = @"127.0.0.1"; //Для пинга дома
+        /////////////////////////////////////////////////////////////////////
+        string connStr = "server=" + "10.10.101.101" + ";user=" + "mysql_user" + ";database=" + "dpo" + ";port=" + "3306" + ";password=" + "208406" + ";";//Для подключения на ВЦ
+        //string connStr = "server=" + "127.0.0.1" + ";user=" + "root" + ";database=" + "dpo" + ";port=" + "3306" + ";password=" + "208406" + ";";//Для подключения Дома
+        /////////////////////////////////////////////////////////////////////
         private void Form1_Load(object sender, EventArgs e)
         {
+            
             //MessageBox.Show("Производится подключение...");
-            
-            
+
+
             ///////////////////////////////////////////////////////////////
             this.AcceptButton = cnct_rdp;
             ///////////////////////////////////////////////////////////////
@@ -42,45 +54,77 @@ namespace RDP
             {
                             ///////////////////////////////////////////////////////////////
                             Ping ping_global = new Ping();
-                            PingReply reply_global = ping_global.Send(@"ya.ru");
+                            PingReply reply_global = ping_global.Send(global_ping);//Проверка интернета
+                            //PingReply reply_global = ping_global.Send(ServMySQL); //Проверка интернета ДОМА.
                             status_global = reply_global.Status;
                             ///////////////////////////////////////////////////////////////
                             Ping ping_local = new Ping();
-                            PingReply reply_local = ping_local.Send(@"10.10.101.101", 10);
+                            PingReply reply_local = ping_local.Send(ServMySQL, 10);
                             status_local = reply_local.Status;
                             ///////////////////////////////////////////////////////////////
                             /////
                 if (status_local == IPStatus.Success)
                     {
-                                MessageBox.Show("База доступна. Ты в локалке. Загружаем списки для Фамилий");
-                                ///////////////////////////////////////////////////////////////   Подключение по MySql
-                                {
-                                    MySqlConnection conn_sp = new MySqlConnection(connStr);
-                                    conn_sp.Open();
+                    MessageBox.Show("База доступна. Ты в локалке. Загружаем списки для Групп");
+                    ///////////////////////////////////////////////////////////////   Подключение по MySql
+                    {
+                        MySqlConnection conn_sp_grp = new MySqlConnection(connStr);
+                        conn_sp_grp.Open();
 
-                                    MySqlCommand FAM = new MySqlCommand("SELECT FAM FROM dpo.users_dpo;", conn_sp);
-                                    MySqlDataReader comb = FAM.ExecuteReader();
+                        MySqlCommand GRP = new MySqlCommand("SELECT FAM FROM dpo.users_dpo where CHK = 1;", conn_sp_grp);
+                        MySqlDataReader comb_grp = GRP.ExecuteReader();
 
-                                    while (comb.Read())
-                                    {
+                        while (comb_grp.Read())
+                        {
 
-                                        string table1 = comb.GetString(0);
-                                        spisok_box.Items.Add(table1);
-                                    }
-                                    comb.Close();
-                                }
-
+                            string table1 = comb_grp.GetString(0);
+                            spisok_box.Items.Add(table1);
+                        }
+                        comb_grp.Close();
                     }
+                    //{
+                    //    MySqlConnection conn_sp_grp = new MySqlConnection(connStr);
+                    //    conn_sp_grp.Open();
+
+                    //    MySqlCommand GRP = new MySqlCommand("SELECT GRP FROM dpo.users_dpo group by GRP;", conn_sp_grp);
+                    //    MySqlDataReader comb_grp = GRP.ExecuteReader();
+
+                    //    while (comb_grp.Read())
+                    //    {
+
+                    //        string table1 = comb_grp.GetString(0);
+                    //        ComboGRP.Items.Add(table1);
+                    //    }
+                    //    comb_grp.Close();
+                    //}
+                    //if (ComboGRP.SelectedIndexChanged += )
+                    //{
+                    //                MySqlConnection conn_sp = new MySqlConnection(connStr);
+                    //                conn_sp.Open();
+
+                    //                MySqlCommand FAM = new MySqlCommand("SELECT FAM FROM dpo.users_dpo where GRP = " + ComboGRP + " and CHK = 1;", conn_sp);
+                    //                MySqlDataReader comb = FAM.ExecuteReader();
+
+                    //                while (comb.Read())
+                    //                {
+
+                    //                    string table1 = comb.GetString(0);
+                    //                    spisok_box.Items.Add(table1);
+                    //                }
+                    //                comb.Close();
+                    //}
+
+                }
                 else if (status_global == IPStatus.Success)
                     {
-                               // MessageBox.Show("Хоть инет есть. Интернет. Запуск ВПН");
-                                ///////ньюконфиг
-                                {
+                                    MessageBox.Show("Хоть инет есть. Интернет. Запуск ВПН");
+                                    ///////ньюконфиг
+                    {
                                     string MyDoc = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);///// Папка "Мои документы"
                                     string rkiu_folder = MyDoc + "\\RKIU"; ///// Папка "Мои документы\RKIU\"
                                     string PBK_File = rkiu_folder + @"\connection.pbk"; ///// Файл "Мои документы\RKIU\connection.pbk"
                                     string BAT_File_Connect = rkiu_folder + @"\connection.bat"; ///// Файл "Мои документы\RKIU\connection.bat"
-                                    this.Text = (rkiu_folder);
+                                    //this.Text = (rkiu_folder);
 
                                     {///// Если не нашел Файл "Мои документы\RKIU\connection.pbk" то создать Папку "Мои документы\RKIU\" и Пустой файл "Мои документы\RKIU\connection.pbk" с записью нижеизложенного. (полный конфиг)
                             if
@@ -249,7 +293,7 @@ namespace RDP
                             }
                                     ///////////////////////////////////////////////////////////////   Подключение по MySql после подключения vpn
                                     Ping ping = new Ping();
-                                    PingReply pingReply = ping.Send(@"10.10.101.101", 10000);
+                                    PingReply pingReply = ping.Send(ServMySQL, 10000);
                                     Console.WriteLine(pingReply.RoundtripTime); //время ответа
                                     Console.WriteLine(pingReply.Status);        //статус
                                                                                 //////////пытается, но у него не получается, просто занимает время чтобы поймать catch
@@ -285,7 +329,7 @@ namespace RDP
                         MySqlConnection conn_sp = new MySqlConnection(connStr);
                         conn_sp.Open();
 
-                        MySqlCommand FAM = new MySqlCommand("SELECT FAM FROM dpo.users_dpo;", conn_sp);
+                        MySqlCommand FAM = new MySqlCommand("SELECT FAM FROM dpo.users_dpo where CHK = 1;", conn_sp);
                         MySqlDataReader comb = FAM.ExecuteReader();
 
                         while (comb.Read())
@@ -304,7 +348,7 @@ namespace RDP
 
                         catch (Exception Ex) 
                         {
-                            MessageBox.Show("Ошибка подключения " + address.Text + "\nОшибка:  " + Ex.Message, "Все очень плохо. В заголовок" , MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Ошибка подключения " + address.Text + "\nОшибка:  " + Ex.Message, "Все очень плохо." , MessageBoxButtons.OK, MessageBoxIcon.Error);
                             Application.Exit();
                         }
 
@@ -312,10 +356,13 @@ namespace RDP
 
 
         }
-       
+
+      
+
         public Form1()
         {
             InitializeComponent();
+            this.Text = Application.CompanyName;
             Application.ApplicationExit += new EventHandler(this.OnApplicationExit);
         }
         private void OnApplicationExit(object sender, EventArgs e)
@@ -330,7 +377,7 @@ namespace RDP
                 (File.Exists(BAT_File_Disconnect) == false) ;
                 FileStream BAT_Text = new FileStream(BAT_File_Disconnect, FileMode.Create);
                 StreamWriter BAT_Writer = new StreamWriter(BAT_Text);
-                BAT_Writer.WriteLine("@echo off");
+                //BAT_Writer.WriteLine("@echo off");
                 //BAT_Writer.Write("start /min ");
                 BAT_Writer.Write("rasdial/d");
                 BAT_Writer.Close();
@@ -363,77 +410,109 @@ namespace RDP
             //  String username_rdp = "boss";
             //   String password_rdp = "newsign147";
 
-            
+
             {
-                MySqlConnection conn = new MySqlConnection(connStr);
-                conn.Open();
-
-                MySqlCommand PVM = new MySqlCommand("SELECT PVM FROM dpo.users_dpo where FAM=" + "'" + spisok_box.SelectedItem + "'" + " and " + "PASS=" + "'" + textBox2.Text + "'" + ";", conn);
-                MySqlDataReader rd = PVM.ExecuteReader();
-
-
-                while (rd.Read())
-                {
-                    string table = rd.GetString(0);
-                    ///  string table2 = log.GetString(0);
-
-                    address.Text = table;
-                    ///  label4.Text = table2;
-                    
-
-
-                    // string table1 = rd1.GetString(0);
-                    // label2.Text = table1;
-                    //comboBox2.Items.Add(table);
-                }
-                rd.Close();
-                {
-                    MySqlConnection conn2 = new MySqlConnection(connStr);
-                    conn2.Open();
-                    MySqlCommand LOGIN = new MySqlCommand("SELECT LOGIN FROM dpo.users_dpo where FAM=" + "'" + spisok_box.SelectedItem + "'" + " and " + "PASS=" + "'" + textBox2.Text + "'" + ";", conn);
-                    MySqlDataReader log = LOGIN.ExecuteReader();
-                    while (log.Read())
+                var worker = new BackgroundWorker { WorkerSupportsCancellation = true };
+                worker.DoWork += (sender1, args) =>
+                { // Выполняется в рабочем потоке
+                    if (args.Cancel) return;
+                    // Thread.Sleep(1000);
+                    args.Result = 123;
                     {
+                        MySqlConnection conn = new MySqlConnection(connStr);
+                        conn.Open();
 
-                        string table2 = log.GetString(0);
+                        MySqlCommand PVM = new MySqlCommand("SELECT PVM FROM dpo.users_dpo where FAM=" + "'" + spisok_box.SelectedItem + "'" + " and " + "PASS=" + "'" + textBox2.Text + "'" + " and CHK = 1;", conn);
+                        MySqlDataReader rd = PVM.ExecuteReader();
 
 
-                        login.Text = table2;
+                        while (rd.Read())
+                        {
+                            string table = rd.GetString(0);
+                            ///  string table2 = log.GetString(0);
 
+                            address.Text = table;
+                            ///  label4.Text = table2;
+
+
+
+                            // string table1 = rd1.GetString(0);
+                            // label2.Text = table1;
+                            //comboBox2.Items.Add(table);
+                        }
+                        rd.Close();
+                        {
+                            MySqlConnection conn2 = new MySqlConnection(connStr);
+                            conn2.Open();
+                            MySqlCommand LOGIN = new MySqlCommand("SELECT LOGIN FROM dpo.users_dpo where FAM=" + "'" + spisok_box.SelectedItem + "'" + " and " + "PASS=" + "'" + textBox2.Text + "'" + " and CHK = 1;", conn);
+                            MySqlDataReader log = LOGIN.ExecuteReader();
+                            while (log.Read())
+                            {
+
+                                string table2 = log.GetString(0);
+
+
+                                login.Text = table2;
+
+
+                            }
+                            log.Close();
+                        }
 
                     }
-                    log.Close();
-                }
 
-            }
+                    try
+                    {
 
-            try
-            {
 
-               
 
-                rdp.Server = address.Text;
-                rdp.Domain = "COLLEGE";
-                rdp.UserName = login.Text;
-                IMsTscNonScriptable secured = (IMsTscNonScriptable)rdp.GetOcx();
-                secured.ClearTextPassword = textBox2.Text;
-                rdp.Connect();
-                /////
-                cnct_rdp.Visible = false;
-                dcnct_rdp.Visible = true;
-                //cnct_rdp.Enabled = false;
-                //dcnct_rdp.Enabled = true;
-                /////
-                this.Width = 768;
-                this.Height = 650;
-                address.Text = null;
-                login.Text = null;
-            }
-            
+                        rdp.Server = address.Text;
+                        rdp.Domain = "COLLEGE";
+                        rdp.UserName = login.Text;
+                        IMsTscNonScriptable secured = (IMsTscNonScriptable)rdp.GetOcx();
+                        secured.ClearTextPassword = textBox2.Text;
+                        rdp.Connect();
+                        /////
+                        cnct_rdp.Visible = false;
+                        dcnct_rdp.Visible = true;
+                        //cnct_rdp.Enabled = false;
+                        //dcnct_rdp.Enabled = true;
+                        /////
+                        this.Width = 768;
+                        this.Height = 650;
+                        address.Text = null;
+                        login.Text = null;
+                    }
 
-            catch
-            {
-                MessageBox.Show("Ошибка подключения к удаленному рабочему столу " + address.Text + "\nОшибка: Неверный пароль ", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    catch
+                    {
+                        MessageBox.Show("Ошибка подключения к удаленному рабочему столу " + address.Text + "\nОшибка: Неверный пароль ", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                };
+                worker.RunWorkerCompleted += (sender1, args) =>
+                { // Выполняется в потоке пользовательского интерфейса // ПОЛЬЗОВАТЕЛЬСКИЙ ИНТЕРФЕЙС
+                  // Здесь можно безопасно обновлять элементы управления
+                  // пользовательского интерфейса ...
+                    if (args.Cancelled)
+                        Console.WriteLine("Cancelled");
+                    else if (args.Error != null)
+                        Console.WriteLine("Error: " + args.Error.Message);
+                    else
+                        Console.WriteLine("Result is: " + args.Result);
+
+
+                };
+                cnct_rdp.Text = "Попытка";
+                worker.RunWorkerAsync();
+                full.Text = "Попытка2";//Захватывает контекст синхронизации и запускает операцию
+
+                //  String server_rdp = "10.10.9.52";
+                //  String username_rdp = "boss";                        
+                //   String password_rdp = "newsign147";
+
+
             }
         }
 
@@ -459,23 +538,18 @@ namespace RDP
             }
             catch (Exception Ex)
             {
-                MessageBox.Show("Error Disconnecting", "Error disconnecting from remote desktop " + address.Text + " Error:  " + Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ошибка отключения", "Ошибка отключения от удаленного рабочего стола " + address.Text + " Ошибка:  " + Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void txtServer_SelectedIndexChanged(object sender, EventArgs e)
-
-        { 
-           
-            
-
-        }
+      
 
         private void cnct_Click(object sender, EventArgs e)
         {
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             ///////ньюконфиг
             {
+                string MyDocs = Application.CommonAppDataPath; //Может понадобится
                 string MyDoc = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);///// Папка "Мои документы"
                 string rkiu_folder = MyDoc + "\\RKIU"; ///// Папка "Мои документы\RKIU\"
                 string PBK_File = rkiu_folder + @"\connection.pbk"; ///// Файл "Мои документы\RKIU\connection.pbk"
@@ -915,7 +989,7 @@ namespace RDP
                 MySqlConnection conn = new MySqlConnection(connStr);
                 conn.Open();
 
-                MySqlCommand PVM = new MySqlCommand("SELECT PVM FROM dpo.users_dpo where FAM=" + "'" + spisok_box.SelectedItem + "'" + " and " + "PASS=" + "'" + textBox2.Text + "'" + ";", conn);
+                MySqlCommand PVM = new MySqlCommand("SELECT PVM FROM dpo.users_dpo where FAM=" + "'" + spisok_box.SelectedItem + "'" + " and " + "PASS=" + "'" + textBox2.Text + "'" + " and CHK = 1;", conn);
                 MySqlDataReader rd = PVM.ExecuteReader();
 
 
@@ -937,7 +1011,7 @@ namespace RDP
                 {
                     MySqlConnection conn2 = new MySqlConnection(connStr);
                     conn2.Open();
-                    MySqlCommand LOGIN = new MySqlCommand("SELECT LOGIN FROM dpo.users_dpo where FAM=" + "'" + spisok_box.SelectedItem + "'" + " and " + "PASS=" + "'" + textBox2.Text + "'" + ";", conn);
+                    MySqlCommand LOGIN = new MySqlCommand("SELECT LOGIN FROM dpo.users_dpo where FAM=" + "'" + spisok_box.SelectedItem + "'" + " and " + "PASS=" + "'" + textBox2.Text + "'" + " and CHK = 1;", conn);
                     MySqlDataReader log = LOGIN.ExecuteReader();
                     while (log.Read())
                     {
@@ -1102,10 +1176,7 @@ namespace RDP
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-
-        }
+  
+       
     }
 }

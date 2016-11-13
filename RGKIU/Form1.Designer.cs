@@ -41,6 +41,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.spisok_box = new System.Windows.Forms.ComboBox();
             this.full = new System.Windows.Forms.Button();
+            this.ComboGRP = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.rdp)).BeginInit();
             this.SuspendLayout();
             // 
@@ -149,6 +150,8 @@
             // 
             // spisok_box
             // 
+            this.spisok_box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.spisok_box.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.spisok_box.FormattingEnabled = true;
             this.spisok_box.Location = new System.Drawing.Point(252, 14);
             this.spisok_box.Name = "spisok_box";
@@ -166,11 +169,23 @@
             this.full.UseVisualStyleBackColor = true;
             this.full.Click += new System.EventHandler(this.full_Click);
             // 
+            // ComboGRP
+            // 
+            this.ComboGRP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboGRP.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ComboGRP.FormattingEnabled = true;
+            this.ComboGRP.Location = new System.Drawing.Point(26, 14);
+            this.ComboGRP.Name = "ComboGRP";
+            this.ComboGRP.Size = new System.Drawing.Size(70, 21);
+            this.ComboGRP.TabIndex = 91;
+            this.ComboGRP.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(762, 47);
+            this.Controls.Add(this.ComboGRP);
             this.Controls.Add(this.cnct_rdp);
             this.Controls.Add(this.full);
             this.Controls.Add(this.spisok_box);
@@ -208,6 +223,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox spisok_box;
         private System.Windows.Forms.Button full;
+        private System.Windows.Forms.ComboBox ComboGRP;
     }
 }
 

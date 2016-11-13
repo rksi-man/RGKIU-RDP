@@ -63,7 +63,32 @@ C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING\RGKIU\bin\Debug\VPN+RDP.exe
 C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING\RGKIU\bin\Debug\VPN+RDP.pdb
 C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING\RGKIU\bin\Debug\Interop.MSTSCLib.dll
 C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING\RGKIU\bin\Debug\AxInterop.MSTSCLib.dll
-C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING\RGKIU\obj\Debug\RGKIU.csprojResolveAssemblyReference.cache
 C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING\RGKIU\obj\Debug\RDP.Form1.resources
 C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING\RGKIU\obj\Debug\RGKIU_VCH.Properties.Resources.resources
 C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING\RGKIU\obj\Debug\RGKIU.csproj.GenerateResource.Cache
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING\RGKIU\bin\Debug\VPN+RDP.exe.manifest
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING\RGKIU\bin\Debug\VPN+RDP.application
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING\RGKIU\obj\Debug\VPN+RDP.TrustInfo.xml
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING\RGKIU\obj\Debug\VPN+RDP.exe.manifest
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING\RGKIU\obj\Debug\VPN+RDP.application
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING\RGKIU\bin\Debug\VPN+RDP.exe.CodeAnalysisLog.xml
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING\RGKIU\bin\Debug\VPN+RDP.exe.lastcodeanalysissucceeded
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING - копия\RGKIU\bin\Debug\VPN+RDP.exe.config
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING - копия\RGKIU\obj\Debug\Interop.MSTSCLib.dll
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING - копия\RGKIU\obj\Debug\AxInterop.MSTSCLib.dll
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING - копия\RGKIU\obj\Debug\RGKIU.csproj.ResolveComReference.cache
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING - копия\RGKIU\obj\Debug\VPN+RDP.exe
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING - копия\RGKIU\obj\Debug\VPN+RDP.pdb
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING - копия\RGKIU\bin\Debug\VPN+RDP.exe.manifest
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING - копия\RGKIU\bin\Debug\VPN+RDP.application
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING - копия\RGKIU\bin\Debug\VPN+RDP.exe
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING - копия\RGKIU\bin\Debug\VPN+RDP.pdb
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING - копия\RGKIU\bin\Debug\Interop.MSTSCLib.dll
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING - копия\RGKIU\bin\Debug\AxInterop.MSTSCLib.dll
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING - копия\RGKIU\obj\Debug\RGKIU.csprojResolveAssemblyReference.cache
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING - копия\RGKIU\obj\Debug\RDP.Form1.resources
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING - копия\RGKIU\obj\Debug\RGKIU_VCH.Properties.Resources.resources
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING - копия\RGKIU\obj\Debug\RGKIU.csproj.GenerateResource.Cache
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING - копия\RGKIU\obj\Debug\VPN+RDP.TrustInfo.xml
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING - копия\RGKIU\obj\Debug\VPN+RDP.exe.manifest
+C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING - копия\RGKIU\obj\Debug\VPN+RDP.application
