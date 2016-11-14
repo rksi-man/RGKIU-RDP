@@ -1007,7 +1007,9 @@ namespace RDP
                 //String password = "newsign147";
                 rdpClient.Server = address.Text;
                 rdpClient.UserName = login.Text;
-                rdpClient.AdvancedSettings2.ClearTextPassword = textBox2.Text;
+                IMsTscNonScriptable secured = (IMsTscNonScriptable)rdpClient.GetOcx();
+                secured.ClearTextPassword = textBox2.Text;
+               // rdpClient.AdvancedSettings2.ClearTextPassword = textBox2.Text; //старое получение пароля
                 rdpClient.Domain = "COLLEGE";
                 rdpClient.FullScreen = true;
 
@@ -1034,12 +1036,12 @@ namespace RDP
                 rdpClient.AdvancedSettings4.ConnectionBarShowMinimizeButton = false;
                 rdpClient.AdvancedSettings4.PinConnectionBar = false;
                 //rdpClient.AdvancedSettings4.DisplayConnectionBar = false; 
-                
+
 
                 //////////////////////////////////////////////////////////////////////////////////
                 // rdpClient.Size = new System.Drawing.Size(screenSize.Size.Width, screenSize.Size.Height);
 
-
+                rdpClient.AdvancedSettings6.AuthenticationLevel = 0; //уровень проверки сертефиката
                 rdpClient.Connect();
                 rdpClient.Visible = false;                // ГИПЕР КОСТЫЛЬ, надеюсь временно
                 //rdp.Visible = false;                    //????
