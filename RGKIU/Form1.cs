@@ -483,7 +483,7 @@ namespace RDP
                     if (rdp.Connected.ToString() == "1")
                     rdp.Disconnect();
                     this.Width = 768;
-                    this.Height = 65;
+                    this.Height = 60;
                     address.Text = null;
                     login.Text = null;
                     /////
