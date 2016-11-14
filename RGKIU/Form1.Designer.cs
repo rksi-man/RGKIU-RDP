@@ -157,6 +157,7 @@
             this.spisok_box.Name = "spisok_box";
             this.spisok_box.Size = new System.Drawing.Size(119, 21);
             this.spisok_box.TabIndex = 0;
+            this.spisok_box.Visible = false;
             // 
             // full
             // 
@@ -174,11 +175,11 @@
             this.ComboGRP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboGRP.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ComboGRP.FormattingEnabled = true;
-            this.ComboGRP.Location = new System.Drawing.Point(26, 14);
+            this.ComboGRP.Location = new System.Drawing.Point(107, 14);
             this.ComboGRP.Name = "ComboGRP";
             this.ComboGRP.Size = new System.Drawing.Size(70, 21);
             this.ComboGRP.TabIndex = 91;
-            this.ComboGRP.Visible = false;
+            this.ComboGRP.SelectedIndexChanged += new System.EventHandler(this.ComboGRP_SelectedIndexChanged);
             // 
             // Form1
             // 

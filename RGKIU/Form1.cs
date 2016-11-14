@@ -67,53 +67,36 @@ namespace RDP
                     {
                     MessageBox.Show("База доступна. Ты в локалке. Загружаем списки для Групп");
                     ///////////////////////////////////////////////////////////////   Подключение по MySql
-                    {
-                        MySqlConnection conn_sp_grp = new MySqlConnection(connStr);
-                        conn_sp_grp.Open();
-
-                        MySqlCommand GRP = new MySqlCommand("SELECT FAM FROM dpo.users_dpo where CHK = 1;", conn_sp_grp);
-                        MySqlDataReader comb_grp = GRP.ExecuteReader();
-
-                        while (comb_grp.Read())
-                        {
-
-                            string table1 = comb_grp.GetString(0);
-                            spisok_box.Items.Add(table1);
-                        }
-                        comb_grp.Close();
-                    }
                     //{
                     //    MySqlConnection conn_sp_grp = new MySqlConnection(connStr);
                     //    conn_sp_grp.Open();
 
-                    //    MySqlCommand GRP = new MySqlCommand("SELECT GRP FROM dpo.users_dpo group by GRP;", conn_sp_grp);
+                    //    MySqlCommand GRP = new MySqlCommand("SELECT FAM FROM dpo.users_dpo where CHK = 1;", conn_sp_grp);
                     //    MySqlDataReader comb_grp = GRP.ExecuteReader();
 
                     //    while (comb_grp.Read())
                     //    {
 
                     //        string table1 = comb_grp.GetString(0);
-                    //        ComboGRP.Items.Add(table1);
+                    //        spisok_box.Items.Add(table1);
                     //    }
                     //    comb_grp.Close();
                     //}
-                    //if (ComboGRP.SelectedIndexChanged += )
-                    //{
-                    //                MySqlConnection conn_sp = new MySqlConnection(connStr);
-                    //                conn_sp.Open();
+                    {
+                        MySqlConnection conn_sp_grp = new MySqlConnection(connStr);
+                        conn_sp_grp.Open();
 
-                    //                MySqlCommand FAM = new MySqlCommand("SELECT FAM FROM dpo.users_dpo where GRP = " + ComboGRP + " and CHK = 1;", conn_sp);
-                    //                MySqlDataReader comb = FAM.ExecuteReader();
+                        MySqlCommand GRP = new MySqlCommand("SELECT GRP FROM dpo.users_dpo group by GRP;", conn_sp_grp);
+                        MySqlDataReader comb_grp = GRP.ExecuteReader();
 
-                    //                while (comb.Read())
-                    //                {
+                        while (comb_grp.Read())
+                        {
 
-                    //                    string table1 = comb.GetString(0);
-                    //                    spisok_box.Items.Add(table1);
-                    //                }
-                    //                comb.Close();
-                    //}
-
+                            string table1 = comb_grp.GetString(0);
+                            ComboGRP.Items.Add(table1);
+                        }
+                        comb_grp.Close();
+                    }
                 }
                 else if (status_global == IPStatus.Success)
                     {
@@ -412,12 +395,6 @@ namespace RDP
 
 
             {
-                var worker = new BackgroundWorker { WorkerSupportsCancellation = true };
-                worker.DoWork += (sender1, args) =>
-                { // Выполняется в рабочем потоке
-                    if (args.Cancel) return;
-                    // Thread.Sleep(1000);
-                    args.Result = 123;
                     {
                         MySqlConnection conn = new MySqlConnection(connStr);
                         conn.Open();
@@ -490,28 +467,7 @@ namespace RDP
                         MessageBox.Show("Ошибка подключения к удаленному рабочему столу " + address.Text + "\nОшибка: Неверный пароль ", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
-                };
-                worker.RunWorkerCompleted += (sender1, args) =>
-                { // Выполняется в потоке пользовательского интерфейса // ПОЛЬЗОВАТЕЛЬСКИЙ ИНТЕРФЕЙС
-                  // Здесь можно безопасно обновлять элементы управления
-                  // пользовательского интерфейса ...
-                    if (args.Cancelled)
-                        Console.WriteLine("Cancelled");
-                    else if (args.Error != null)
-                        Console.WriteLine("Error: " + args.Error.Message);
-                    else
-                        Console.WriteLine("Result is: " + args.Result);
-
-
-                };
-                cnct_rdp.Text = "Попытка";
-                worker.RunWorkerAsync();
-                full.Text = "Попытка2";//Захватывает контекст синхронизации и запускает операцию
-
-                //  String server_rdp = "10.10.9.52";
-                //  String username_rdp = "boss";                        
-                //   String password_rdp = "newsign147";
-
+               
 
             }
         }
@@ -1176,7 +1132,28 @@ namespace RDP
 
         }
 
-  
-       
+        private void ComboGRP_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ComboGRP.SelectedIndex > -1)
+            {
+                spisok_box.Items.Clear();
+                {
+                    MySqlConnection conn_sp = new MySqlConnection(connStr);
+                    conn_sp.Open();
+
+                    MySqlCommand FAM = new MySqlCommand("SELECT FAM FROM dpo.users_dpo where GRP = " + ComboGRP.SelectedItem + ";", conn_sp);
+                    MySqlDataReader comb = FAM.ExecuteReader();
+
+                    while (comb.Read())
+                    {
+
+                        string table1 = comb.GetString(0);
+                        spisok_box.Items.Add(table1);
+                    }
+                    comb.Close();
+                }
+                spisok_box.Visible = true;
+            }
+        }
     }
 }
