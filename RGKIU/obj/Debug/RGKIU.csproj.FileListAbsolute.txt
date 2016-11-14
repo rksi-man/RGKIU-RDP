@@ -92,3 +92,9 @@ C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING - копия\RGKIU\obj\Debug\RGKI
 C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING - копия\RGKIU\obj\Debug\VPN+RDP.TrustInfo.xml
 C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING - копия\RGKIU\obj\Debug\VPN+RDP.exe.manifest
 C:\Users\А10\Desktop\TEMP\VPN_RDP_REFACROTING - копия\RGKIU\obj\Debug\VPN+RDP.application
+C:\Users\admin\Documents\RGKIU-VPN-RDP\RGKIU\bin\Debug\VPN+RDP.exe.config
+C:\Users\admin\Documents\RGKIU-VPN-RDP\RGKIU\obj\Debug\Interop.MSTSCLib.dll
+C:\Users\admin\Documents\RGKIU-VPN-RDP\RGKIU\obj\Debug\AxInterop.MSTSCLib.dll
+C:\Users\admin\Documents\RGKIU-VPN-RDP\RGKIU\obj\Debug\RGKIU.csproj.ResolveComReference.cache
+C:\Users\admin\Documents\RGKIU-VPN-RDP\RGKIU\obj\Debug\VPN+RDP.exe
+C:\Users\admin\Documents\RGKIU-VPN-RDP\RGKIU\obj\Debug\VPN+RDP.pdb
