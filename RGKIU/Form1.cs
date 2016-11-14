@@ -13,6 +13,7 @@ using MySql.Data.MySqlClient;
 using System.Net;
 using System.Threading;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 
 namespace RDP
 {
@@ -20,6 +21,7 @@ namespace RDP
 
     public partial class Form1 : Form
     {
+        
         IPStatus status_global = IPStatus.TimedOut;
         IPStatus status_local = IPStatus.TimedOut;
         Rectangle screenSize = System.Windows.Forms.Screen.PrimaryScreen.Bounds;
@@ -31,7 +33,7 @@ namespace RDP
         string ServMySQL = @"10.10.101.101"; //Для пинга на ВЦ
         //string ServMySQL = @"127.0.0.1"; //Для пинга дома
         /////////////////////////////////////////////////////////////////////
-        string connStr = "server=" + "10.10.101.101" + ";user=" + "mysql_user" + ";database=" + "dpo" + ";port=" + "3306" + ";password=" + "208406" + ";";//Для подключения на ВЦ
+        string connStr = "server=" + "10.10.101.101" + ";user=" + "mysql_user" + ";database=" + "dpo" + ";port=" + "3306" + ";password=" + "208406" + "; CharSet = utf8;";//Для подключения на ВЦ
         //string connStr = "server=" + "127.0.0.1" + ";user=" + "root" + ";database=" + "dpo" + ";port=" + "3306" + ";password=" + "208406" + ";";//Для подключения Дома
         /////////////////////////////////////////////////////////////////////
         private void Form1_Load(object sender, EventArgs e)
@@ -345,7 +347,7 @@ namespace RDP
         public Form1()
         {
             InitializeComponent();
-            this.Text = Application.CompanyName;
+            this.Text = Application.ProductName;
             Application.ApplicationExit += new EventHandler(this.OnApplicationExit);
         }
         private void OnApplicationExit(object sender, EventArgs e)
@@ -440,7 +442,6 @@ namespace RDP
 
                     try
                     {
-
 
                         rdp.Visible = true;
                         rdp.Server = address.Text;
@@ -999,9 +1000,9 @@ namespace RDP
                 rdpClient.TabIndex = 1;
                 rdpClient.Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
                 Controls.Add(rdpClient); ((ISupportInitialize)rdpClient).EndInit();
+
+
                 
-
-
                 //String username = "boss";
                 //String password = "newsign147";
                 rdpClient.Server = address.Text;
@@ -1010,21 +1011,30 @@ namespace RDP
                 rdpClient.Domain = "COLLEGE";
                 rdpClient.FullScreen = true;
 
-                ////rdpClient.AdvancedSettings2.RedirectDrives = false;
-                ////rdpClient.AdvancedSettings2.RedirectPrinters = false;
-                ////rdpClient.AdvancedSettings2.RedirectPorts = false;
-                ////rdpClient.AdvancedSettings2.RedirectSmartCards = false;
-                ////rdpClient.AdvancedSettings6.RedirectClipboard = false;
-                ////rdpClient.AdvancedSettings6.MinutesToIdleTimeout = 1;
-                //////////////////////////////////////////////////////////////////////////////////
+
+                rdpClient.AdvancedSettings2.PerformanceFlags = 127; //графика
+                rdpClient.ColorDepth = 16; // цвета
+                rdpClient.AdvancedSettings2.ConnectToServerConsole = true; // под вопросом???
+
+
+
+
+
+                rdpClient.AdvancedSettings2.RedirectDrives = false;
+                rdpClient.AdvancedSettings2.RedirectPrinters = false;
+                rdpClient.AdvancedSettings2.RedirectPorts = false;
+                rdpClient.AdvancedSettings2.RedirectSmartCards = false;
+                rdpClient.AdvancedSettings6.RedirectClipboard = false;
+                rdpClient.AdvancedSettings6.MinutesToIdleTimeout = 1;
+                //////////////////////////////////////////////////////////////////////////////
                 //rdpClient.AdvancedSettings2.ContainerHandledFullScreen = 1;
-                
+
 
                 rdpClient.AdvancedSettings4.ConnectionBarShowRestoreButton = false;
                 rdpClient.AdvancedSettings4.ConnectionBarShowMinimizeButton = false;
                 rdpClient.AdvancedSettings4.PinConnectionBar = false;
                 //rdpClient.AdvancedSettings4.DisplayConnectionBar = false; 
-
+                
 
                 //////////////////////////////////////////////////////////////////////////////////
                 // rdpClient.Size = new System.Drawing.Size(screenSize.Size.Width, screenSize.Size.Height);
@@ -1167,5 +1177,12 @@ namespace RDP
         {
             textBox2.Enabled = true;
         }
+      
+
+        private void textBox2_TextChanged_1(object sender, EventArgs e)
+        {
+            textBox2.CharacterCasing = CharacterCasing.Lower;
+        }
+      
     }
 }
