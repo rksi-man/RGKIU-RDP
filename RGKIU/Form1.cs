@@ -86,7 +86,7 @@ namespace RDP
                         MySqlConnection conn_sp_grp = new MySqlConnection(connStr);
                         conn_sp_grp.Open();
 
-                        MySqlCommand GRP = new MySqlCommand("SELECT GRP FROM dpo.users_dpo group by GRP;", conn_sp_grp);
+                        MySqlCommand GRP = new MySqlCommand("SELECT GRP FROM dpo.users_dpo where CHK = '1' group by GRP;", conn_sp_grp);
                         MySqlDataReader comb_grp = GRP.ExecuteReader();
 
                         while (comb_grp.Read())
@@ -442,7 +442,7 @@ namespace RDP
                     {
 
 
-
+                        rdp.Visible = true;
                         rdp.Server = address.Text;
                         rdp.Domain = "COLLEGE";
                         rdp.UserName = login.Text;
@@ -464,8 +464,10 @@ namespace RDP
 
                     catch
                     {
-                        MessageBox.Show("Ошибка подключения к удаленному рабочему столу " + address.Text + "\nОшибка: Неверный пароль ", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    rdp.Visible = false;
+                    MessageBox.Show("Ошибка подключения к удаленному рабочему столу " + address.Text + "\nОшибка: Неверный пароль ", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        
+                }
 
                
 
@@ -494,6 +496,7 @@ namespace RDP
             }
             catch (Exception Ex)
             {
+                rdp.Visible = false;
                 MessageBox.Show("Ошибка отключения", "Ошибка отключения от удаленного рабочего стола " + address.Text + " Ошибка:  " + Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -1140,20 +1143,29 @@ namespace RDP
                 {
                     MySqlConnection conn_sp = new MySqlConnection(connStr);
                     conn_sp.Open();
-
-                    MySqlCommand FAM = new MySqlCommand("SELECT FAM FROM dpo.users_dpo where GRP = " + ComboGRP.SelectedItem + ";", conn_sp);
+                    MySqlCommand FAM = new MySqlCommand("SELECT FAM FROM dpo.users_dpo where GRP = " + "'" + ComboGRP.SelectedItem + "'" + ";", conn_sp);
                     MySqlDataReader comb = FAM.ExecuteReader();
-
                     while (comb.Read())
                     {
 
                         string table1 = comb.GetString(0);
                         spisok_box.Items.Add(table1);
+
                     }
                     comb.Close();
                 }
-                spisok_box.Visible = true;
+                spisok_box.Enabled = true;          
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void spisok_box_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBox2.Enabled = true;
         }
     }
 }
