@@ -482,7 +482,7 @@ namespace RDP
                 {
                     if (rdp.Connected.ToString() == "1")
                     rdp.Disconnect();
-                    this.Width = 768;
+                    this.Width = 766;
                     this.Height = 75;
                     address.Text = null;
                     login.Text = null;
