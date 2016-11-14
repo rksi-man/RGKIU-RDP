@@ -106,8 +106,8 @@
             // 
             // spisok_box
             // 
-            this.spisok_box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.spisok_box, "spisok_box");
+            this.spisok_box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.spisok_box.FormattingEnabled = true;
             this.spisok_box.Name = "spisok_box";
             this.spisok_box.SelectedIndexChanged += new System.EventHandler(this.spisok_box_SelectedIndexChanged);
@@ -122,9 +122,9 @@
             // 
             // ComboGRP
             // 
+            resources.ApplyResources(this.ComboGRP, "ComboGRP");
             this.ComboGRP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboGRP.FormattingEnabled = true;
-            resources.ApplyResources(this.ComboGRP, "ComboGRP");
             this.ComboGRP.Name = "ComboGRP";
             this.ComboGRP.SelectedIndexChanged += new System.EventHandler(this.ComboGRP_SelectedIndexChanged);
             // 

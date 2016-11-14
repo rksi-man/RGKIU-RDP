@@ -119,3 +119,6 @@ C:\Users\А10\Documents\RGKIU-RDP\RGKIU\obj\Debug\AxInterop.MSTSCLib.dll
 C:\Users\А10\Documents\RGKIU-RDP\RGKIU\obj\Debug\RGKIU.csproj.ResolveComReference.cache
 C:\Users\А10\Documents\RGKIU-RDP\RGKIU\obj\Debug\VPN+RDP.exe
 C:\Users\А10\Documents\RGKIU-RDP\RGKIU\obj\Debug\VPN+RDP.pdb
+C:\Users\admin\Documents\RGKIU-RDP\RGKIU\bin\Debug\en-US\VPN+RDP.resources.dll
+C:\Users\admin\Documents\RGKIU-RDP\RGKIU\obj\Debug\RDP.Form1.en-US.resources
+C:\Users\admin\Documents\RGKIU-RDP\RGKIU\obj\Debug\en-US\VPN+RDP.resources.dll
