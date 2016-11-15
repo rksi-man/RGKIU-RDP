@@ -88,6 +88,7 @@
             resources.ApplyResources(this.textBox2, "textBox2");
             this.textBox2.Name = "textBox2";
             this.textBox2.Tag = "";
+            this.textBox2.Click += new System.EventHandler(this.dcnct_rdp_Click);
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged_1);
             // 
             // address
@@ -104,6 +105,7 @@
             // 
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // spisok_box
             // 
@@ -112,6 +114,7 @@
             this.spisok_box.FormattingEnabled = true;
             this.spisok_box.Name = "spisok_box";
             this.spisok_box.SelectedIndexChanged += new System.EventHandler(this.spisok_box_SelectedIndexChanged);
+            this.spisok_box.Click += new System.EventHandler(this.dcnct_rdp_Click);
             // 
             // full
             // 
@@ -128,6 +131,7 @@
             resources.ApplyResources(this.ComboGRP, "ComboGRP");
             this.ComboGRP.Name = "ComboGRP";
             this.ComboGRP.SelectedIndexChanged += new System.EventHandler(this.ComboGRP_SelectedIndexChanged);
+            this.ComboGRP.Click += new System.EventHandler(this.dcnct_rdp_Click);
             // 
             // label1
             // 
@@ -139,6 +143,7 @@
             // 
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // Form1
             // 

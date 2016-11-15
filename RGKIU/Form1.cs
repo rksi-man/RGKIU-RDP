@@ -442,22 +442,31 @@ namespace RDP
 
                     try
                     {
-
-                        rdp.Visible = true;
+                        
                         rdp.Server = address.Text;
                         rdp.Domain = "COLLEGE";
                         rdp.UserName = login.Text;
                         IMsTscNonScriptable secured = (IMsTscNonScriptable)rdp.GetOcx();
                         secured.ClearTextPassword = textBox2.Text;
-                        rdp.Connect();
-                        /////
-                        cnct_rdp.Visible = false;
+
+                    rdp.Location = new System.Drawing.Point(0, 50);
+                    rdp.Size = new System.Drawing.Size(800, 600);
+                    /////////////////////////////////////////////
+                    //rdp.
+                    /////////////////////////////////////////////
+                    rdp.Connect();
+
+                    rdp.Visible = true;
+                    
+                    this.Width = 805;
+                    this.Height = 680;
+                    /////
+                    cnct_rdp.Visible = false;
                         dcnct_rdp.Visible = true;
                         //cnct_rdp.Enabled = false;
                         //dcnct_rdp.Enabled = true;
                         /////
-                        this.Width = 768;
-                        this.Height = 650;
+                        
                         address.Text = null;
                         login.Text = null;
                     }
@@ -483,13 +492,14 @@ namespace RDP
                 {
                     if (rdp.Connected.ToString() == "1")
                     rdp.Disconnect();
-                    this.Width = 768;
+                    this.Width = 805;
                     this.Height = 75;
                     address.Text = null;
                     login.Text = null;
                     /////
                     cnct_rdp.Visible = true;
                     dcnct_rdp.Visible = false;
+                    rdp.Visible = false;
                     /////
                     //cnct_rdp.Enabled = true;
                     //dcnct_rdp.Enabled = false;
@@ -1036,8 +1046,8 @@ namespace RDP
                 rdpClient.AdvancedSettings4.ConnectionBarShowMinimizeButton = false;
                 rdpClient.AdvancedSettings4.PinConnectionBar = false;
                 //rdpClient.AdvancedSettings4.DisplayConnectionBar = false; 
-
-
+                
+               
                 //////////////////////////////////////////////////////////////////////////////////
                 // rdpClient.Size = new System.Drawing.Size(screenSize.Size.Width, screenSize.Size.Height);
 
@@ -1046,7 +1056,7 @@ namespace RDP
                 rdpClient.Visible = false;                // √»œ≈–  Œ—“€À‹, Ì‡‰Â˛Ò¸ ‚ÂÏÂÌÌÓ
                 //rdp.Visible = false;                    //????
                 ///////////////////////////
-                this.Width = 768;
+                this.Width = 805;
                 this.Height = 75;
                 address.Text = null;
                 login.Text = null;
@@ -1185,6 +1195,15 @@ namespace RDP
         {
             textBox2.CharacterCasing = CharacterCasing.Lower;
         }
-      
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
