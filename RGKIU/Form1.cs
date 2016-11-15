@@ -628,7 +628,7 @@ namespace RDP
                         PBK_Writer.WriteLine("Device=WAN Miniport (PPTP)");
 
                         PBK_Writer.WriteLine("DEVICE=vpn");
-                        PBK_Writer.WriteLine("PhoneNumber=109.195.230.222");
+                        PBK_Writer.WriteLine("PhoneNumber=109.195.230.224");
                         PBK_Writer.WriteLine("AreaCode=");
                         PBK_Writer.WriteLine("CountryCode=0");
                         PBK_Writer.WriteLine("CountryID=0");
@@ -657,9 +657,9 @@ namespace RDP
                     StreamWriter BAT_Writer = new StreamWriter(BAT_Text);
                     //BAT_Writer.WriteLine("@echo off");
                     //BAT_Writer.Write("start /min ");
-                    BAT_Writer.Write(@"rasdial ""RKIU"" ");
+                    BAT_Writer.Write(@"rasdial ""RKIU-VPN"" ");
                     BAT_Writer.Write("vpn ");
-                    BAT_Writer.Write("rkiuvpn ");
+                    BAT_Writer.Write("newsignuser ");
                     BAT_Writer.Write("/phonebook:");
                     BAT_Writer.Write(@"""");
                     BAT_Writer.Write(PBK_File);
