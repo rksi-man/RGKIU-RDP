@@ -30,10 +30,10 @@ namespace RDP
         string global_ping = @"ya.ru"; //Для пинга на ВЦ
         //string global_ping = @"127.0.0.1"; //Для пинга на ВЦ
         /////////////////////////////////////////////////////////////////////
-        string ServMySQL = @"10.10.101.101"; //Для пинга на ВЦ
+        string ServMySQL = @"10.10.6.25"; //Для пинга на ВЦ
         //string ServMySQL = @"127.0.0.1"; //Для пинга дома
         /////////////////////////////////////////////////////////////////////
-        string connStr = "server=" + "10.10.101.101" + ";user=" + "mysql_user" + ";database=" + "dpo" + ";port=" + "3306" + ";password=" + "208406" + "; CharSet = utf8;";//Для подключения на ВЦ
+        string connStr = "server=" + "10.10.6.25" + ";user=" + "mysql_user" + ";database=" + "dpo" + ";port=" + "3306" + ";password=" + "208406" + "; CharSet = utf8;";//Для подключения на ВЦ
         //string connStr = "server=" + "127.0.0.1" + ";user=" + "root" + ";database=" + "dpo" + ";port=" + "3306" + ";password=" + "208406" + ";";//Для подключения Дома
         /////////////////////////////////////////////////////////////////////
         private void Form1_Load(object sender, EventArgs e)
@@ -213,7 +213,7 @@ namespace RDP
                                             PBK_Writer.WriteLine("Device=WAN Miniport (PPTP)");
 
                                             PBK_Writer.WriteLine("DEVICE=vpn");
-                                            PBK_Writer.WriteLine("PhoneNumber=109.195.230.222");
+                                            PBK_Writer.WriteLine("PhoneNumber=109.195.230.224");
                                             PBK_Writer.WriteLine("AreaCode=");
                                             PBK_Writer.WriteLine("CountryCode=0");
                                             PBK_Writer.WriteLine("CountryID=0");
@@ -244,7 +244,7 @@ namespace RDP
                                         //BAT_Writer.Write("start /min ");
                                         BAT_Writer.Write(@"rasdial ""RKIU"" ");
                                         BAT_Writer.Write("vpn ");
-                                        BAT_Writer.Write("rkiuvpn ");
+                                        BAT_Writer.Write("newsignuser ");
                                         BAT_Writer.Write("/phonebook:");
                                         BAT_Writer.Write(@"""");
                                         BAT_Writer.Write(PBK_File);
@@ -459,7 +459,7 @@ namespace RDP
                     rdp.Visible = true;
                     
                     this.Width = 805;
-                    this.Height = 680;
+                    this.Height = 672;
                     /////
                     cnct_rdp.Visible = false;
                         dcnct_rdp.Visible = true;
@@ -493,7 +493,7 @@ namespace RDP
                     if (rdp.Connected.ToString() == "1")
                     rdp.Disconnect();
                     this.Width = 805;
-                    this.Height = 75;
+                    this.Height = 72;
                     address.Text = null;
                     login.Text = null;
                     /////
