@@ -1,4 +1,4 @@
-using System;
+п»їusing System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,20 +26,20 @@ namespace RDP
         IPStatus status_local = IPStatus.TimedOut;
         Rectangle screenSize = System.Windows.Forms.Screen.PrimaryScreen.Bounds;
 
-        //Переменные для MySQL
-        string global_ping = @"ya.ru"; //Для пинга на ВЦ
-        //string global_ping = @"127.0.0.1"; //Для пинга на ВЦ
+        //РџРµСЂРµРјРµРЅРЅС‹Рµ РґР»СЏ MySQL
+        string global_ping = @"ya.ru"; //Р”Р»СЏ РїРёРЅРіР° РЅР° Р’Р¦
+        //string global_ping = @"127.0.0.1"; //Р”Р»СЏ РїРёРЅРіР° РЅР° Р’Р¦
         /////////////////////////////////////////////////////////////////////
-        string ServMySQL = @"10.10.101.101"; //Для пинга на ВЦ
-        //string ServMySQL = @"127.0.0.1"; //Для пинга дома
+        string ServMySQL = @"10.10.101.101"; //Р”Р»СЏ РїРёРЅРіР° РЅР° Р’Р¦
+        //string ServMySQL = @"127.0.0.1"; //Р”Р»СЏ РїРёРЅРіР° РґРѕРјР°
         /////////////////////////////////////////////////////////////////////
-        string connStr = "server=" + "10.10.101.101" + ";user=" + "mysql_user" + ";database=" + "dpo" + ";port=" + "3306" + ";password=" + "208406" + "; CharSet = utf8;";//Для подключения на ВЦ
-        //string connStr = "server=" + "127.0.0.1" + ";user=" + "root" + ";database=" + "dpo" + ";port=" + "3306" + ";password=" + "208406" + ";";//Для подключения Дома
+        string connStr = "server=" + "10.10.101.101" + ";user=" + "mysql_user" + ";database=" + "dpo" + ";port=" + "3306" + ";password=" + "208406" + "; CharSet = utf8;";//Р”Р»СЏ РїРѕРґРєР»СЋС‡РµРЅРёСЏ РЅР° Р’Р¦
+        //string connStr = "server=" + "127.0.0.1" + ";user=" + "root" + ";database=" + "dpo" + ";port=" + "3306" + ";password=" + "208406" + ";";//Р”Р»СЏ РїРѕРґРєР»СЋС‡РµРЅРёСЏ Р”РѕРјР°
         /////////////////////////////////////////////////////////////////////
         private void Form1_Load(object sender, EventArgs e)
         {
             
-            //MessageBox.Show("Производится подключение...");
+            //MessageBox.Show("РџСЂРѕРёР·РІРѕРґРёС‚СЃСЏ РїРѕРґРєР»СЋС‡РµРЅРёРµ...");
 
 
             ///////////////////////////////////////////////////////////////
@@ -56,8 +56,8 @@ namespace RDP
             {
                             ///////////////////////////////////////////////////////////////
                             Ping ping_global = new Ping();
-                            PingReply reply_global = ping_global.Send(global_ping);//Проверка интернета
-                            //PingReply reply_global = ping_global.Send(ServMySQL); //Проверка интернета ДОМА.
+                            PingReply reply_global = ping_global.Send(global_ping);//РџСЂРѕРІРµСЂРєР° РёРЅС‚РµСЂРЅРµС‚Р°
+                            //PingReply reply_global = ping_global.Send(ServMySQL); //РџСЂРѕРІРµСЂРєР° РёРЅС‚РµСЂРЅРµС‚Р° Р”РћРњРђ.
                             status_global = reply_global.Status;
                             ///////////////////////////////////////////////////////////////
                             Ping ping_local = new Ping();
@@ -67,8 +67,8 @@ namespace RDP
                             /////
                 if (status_local == IPStatus.Success)
                     {
-                    MessageBox.Show("База доступна. Ты в локалке. Загружаем списки для Групп");
-                    ///////////////////////////////////////////////////////////////   Подключение по MySql
+                    MessageBox.Show("Р‘Р°Р·Р° РґРѕСЃС‚СѓРїРЅР°. РўС‹ РІ Р»РѕРєР°Р»РєРµ. Р—Р°РіСЂСѓР¶Р°РµРј СЃРїРёСЃРєРё РґР»СЏ Р“СЂСѓРїРї");
+                    ///////////////////////////////////////////////////////////////   РџРѕРґРєР»СЋС‡РµРЅРёРµ РїРѕ MySql
                     //{
                     //    MySqlConnection conn_sp_grp = new MySqlConnection(connStr);
                     //    conn_sp_grp.Open();
@@ -102,16 +102,16 @@ namespace RDP
                 }
                 else if (status_global == IPStatus.Success)
                     {
-                                    MessageBox.Show("Хоть инет есть. Интернет. Запуск ВПН");
-                                    ///////ньюконфиг
+                                    MessageBox.Show("РҐРѕС‚СЊ РёРЅРµС‚ РµСЃС‚СЊ. РРЅС‚РµСЂРЅРµС‚. Р—Р°РїСѓСЃРє Р’РџРќ");
+                                    ///////РЅСЊСЋРєРѕРЅС„РёРі
                     {
-                                    string MyDoc = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);///// Папка "Мои документы"
-                                    string rkiu_folder = MyDoc + "\\RKIU"; ///// Папка "Мои документы\RKIU\"
-                                    string PBK_File = rkiu_folder + @"\connection.pbk"; ///// Файл "Мои документы\RKIU\connection.pbk"
-                                    string BAT_File_Connect = rkiu_folder + @"\connection.bat"; ///// Файл "Мои документы\RKIU\connection.bat"
+                                    string MyDoc = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);///// РџР°РїРєР° "РњРѕРё РґРѕРєСѓРјРµРЅС‚С‹"
+                                    string rkiu_folder = MyDoc + "\\RKIU"; ///// РџР°РїРєР° "РњРѕРё РґРѕРєСѓРјРµРЅС‚С‹\RKIU\"
+                                    string PBK_File = rkiu_folder + @"\connection.pbk"; ///// Р¤Р°Р№Р» "РњРѕРё РґРѕРєСѓРјРµРЅС‚С‹\RKIU\connection.pbk"
+                                    string BAT_File_Connect = rkiu_folder + @"\connection.bat"; ///// Р¤Р°Р№Р» "РњРѕРё РґРѕРєСѓРјРµРЅС‚С‹\RKIU\connection.bat"
                                     //this.Text = (rkiu_folder);
 
-                                    {///// Если не нашел Файл "Мои документы\RKIU\connection.pbk" то создать Папку "Мои документы\RKIU\" и Пустой файл "Мои документы\RKIU\connection.pbk" с записью нижеизложенного. (полный конфиг)
+                                    {///// Р•СЃР»Рё РЅРµ РЅР°С€РµР» Р¤Р°Р№Р» "РњРѕРё РґРѕРєСѓРјРµРЅС‚С‹\RKIU\connection.pbk" С‚Рѕ СЃРѕР·РґР°С‚СЊ РџР°РїРєСѓ "РњРѕРё РґРѕРєСѓРјРµРЅС‚С‹\RKIU\" Рё РџСѓСЃС‚РѕР№ С„Р°Р№Р» "РњРѕРё РґРѕРєСѓРјРµРЅС‚С‹\RKIU\connection.pbk" СЃ Р·Р°РїРёСЃСЊСЋ РЅРёР¶РµРёР·Р»РѕР¶РµРЅРЅРѕРіРѕ. (РїРѕР»РЅС‹Р№ РєРѕРЅС„РёРі)
                             if
 
                                         (File.Exists(PBK_File) == false)
@@ -120,7 +120,7 @@ namespace RDP
                                         StreamWriter PBK_Writer = new StreamWriter(PBK_Text);
 
 
-                                        {///// Полный конфиг PBK файла.
+                                        {///// РџРѕР»РЅС‹Р№ РєРѕРЅС„РёРі PBK С„Р°Р№Р»Р°.
                                             PBK_Writer.WriteLine("[RKIU]");
                                             PBK_Writer.WriteLine("Encoding=1");
                                             PBK_Writer.WriteLine("PBVersion=1");
@@ -230,7 +230,7 @@ namespace RDP
 
 
 
-                                        {///// Закрыть поток. Иначе не сохранит.
+                                        {///// Р—Р°РєСЂС‹С‚СЊ РїРѕС‚РѕРє. РРЅР°С‡Рµ РЅРµ СЃРѕС…СЂР°РЅРёС‚.
                                             PBK_Writer.Close();
                                         }
                                     }
@@ -257,18 +257,18 @@ namespace RDP
                                         cnct.Enabled = false;
                                         dcnct.Enabled = true;
                                         ProcessStartInfo Connect_Process = new ProcessStartInfo(BAT_File_Connect);
-                                        // Process Connect_Process = new Process(); ///старый коннект
+                                        // Process Connect_Process = new Process(); ///СЃС‚Р°СЂС‹Р№ РєРѕРЅРЅРµРєС‚
                                         Connect_Process.WindowStyle = ProcessWindowStyle.Hidden;
                                         Connect_Process.RedirectStandardOutput = true;
                                         Connect_Process.UseShellExecute = false;
                                         Connect_Process.CreateNoWindow = true;
-                                        //запуск процесса
+                                        //Р·Р°РїСѓСЃРє РїСЂРѕС†РµСЃСЃР°
                                         Process New_Connect_Process = Process.Start(Connect_Process);
-                                        //получить ответ
+                                        //РїРѕР»СѓС‡РёС‚СЊ РѕС‚РІРµС‚
                                         StreamReader str_incom = New_Connect_Process.StandardOutput;
-                                        //выводим результат
+                                        //РІС‹РІРѕРґРёРј СЂРµР·СѓР»СЊС‚Р°С‚
                                         Console.WriteLine(str_incom.ReadToEnd());
-                                        //закрыть процесс
+                                        //Р·Р°РєСЂС‹С‚СЊ РїСЂРѕС†РµСЃСЃ
                                         New_Connect_Process.WaitForExit();
                                         Console.Read();
 
@@ -276,20 +276,20 @@ namespace RDP
 
                             
                             }
-                                    ///////////////////////////////////////////////////////////////   Подключение по MySql после подключения vpn
+                                    ///////////////////////////////////////////////////////////////   РџРѕРґРєР»СЋС‡РµРЅРёРµ РїРѕ MySql РїРѕСЃР»Рµ РїРѕРґРєР»СЋС‡РµРЅРёСЏ vpn
                                     Ping ping = new Ping();
                                     PingReply pingReply = ping.Send(ServMySQL, 10000);
-                                    Console.WriteLine(pingReply.RoundtripTime); //время ответа
-                                    Console.WriteLine(pingReply.Status);        //статус
-                                                                                //////////пытается, но у него не получается, просто занимает время чтобы поймать catch
+                                    Console.WriteLine(pingReply.RoundtripTime); //РІСЂРµРјСЏ РѕС‚РІРµС‚Р°
+                                    Console.WriteLine(pingReply.Status);        //СЃС‚Р°С‚СѓСЃ
+                                                                                //////////РїС‹С‚Р°РµС‚СЃСЏ, РЅРѕ Сѓ РЅРµРіРѕ РЅРµ РїРѕР»СѓС‡Р°РµС‚СЃСЏ, РїСЂРѕСЃС‚Рѕ Р·Р°РЅРёРјР°РµС‚ РІСЂРµРјСЏ С‡С‚РѕР±С‹ РїРѕР№РјР°С‚СЊ catch
                     try
-                    {//////////////////////////////////////////////// Мой первый костыль костылей, который работает.
+                    {//////////////////////////////////////////////// РњРѕР№ РїРµСЂРІС‹Р№ РєРѕСЃС‚С‹Р»СЊ РєРѕСЃС‚С‹Р»РµР№, РєРѕС‚РѕСЂС‹Р№ СЂР°Р±РѕС‚Р°РµС‚.
                         if (pingReply.Status == IPStatus.Success)
                         {
                             MySqlConnection conn_sp = new MySqlConnection(connStr);
                             conn_sp.Open();
                             
-                            //прерывание. ошибка
+                            //РїСЂРµСЂС‹РІР°РЅРёРµ. РѕС€РёР±РєР°
                             //MySqlCommand FAM = new MySqlCommand("SELECT FAM FROM dpo.users_dpo;", conn_sp);
                             //MySqlDataReader comb = FAM.ExecuteReader();
 
@@ -299,12 +299,12 @@ namespace RDP
                             //    spisok_box.Items.Add(table1);
                             //}
                             //comb.Close();
-                            //  MessageBox.Show("Работает по исключению");
+                            //  MessageBox.Show("Р Р°Р±РѕС‚Р°РµС‚ РїРѕ РёСЃРєР»СЋС‡РµРЅРёСЋ");
                         }
 
                         else 
                         {
-                            MessageBox.Show("Ошибка подключеня к серверу РГКИУ", "Все очень плохо. В заголовок", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("РћС€РёР±РєР° РїРѕРґРєР»СЋС‡РµРЅСЏ Рє СЃРµСЂРІРµСЂСѓ Р Р“РљРРЈ", "Р’СЃРµ РѕС‡РµРЅСЊ РїР»РѕС…Рѕ. Р’ Р·Р°РіРѕР»РѕРІРѕРє", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             Application.Exit();
                         }
 
@@ -325,7 +325,7 @@ namespace RDP
                         comb.Close();
                     }
 
-                                ///////////////////////////////////////////////////////////////   Подключение по MySql после подключения vpn
+                                ///////////////////////////////////////////////////////////////   РџРѕРґРєР»СЋС‡РµРЅРёРµ РїРѕ MySql РїРѕСЃР»Рµ РїРѕРґРєР»СЋС‡РµРЅРёСЏ vpn
 
                     }
 
@@ -333,7 +333,7 @@ namespace RDP
 
                         catch (Exception Ex) 
                         {
-                            MessageBox.Show("Ошибка подключения " + address.Text + "\nОшибка:  " + Ex.Message, "Все очень плохо." , MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("РћС€РёР±РєР° РїРѕРґРєР»СЋС‡РµРЅРёСЏ " + address.Text + "\nРћС€РёР±РєР°:  " + Ex.Message, "Р’СЃРµ РѕС‡РµРЅСЊ РїР»РѕС…Рѕ." , MessageBoxButtons.OK, MessageBoxIcon.Error);
                             Application.Exit();
                         }
 
@@ -352,7 +352,7 @@ namespace RDP
         }
         private void OnApplicationExit(object sender, EventArgs e)
         {
-            ///////ньюконфиг2
+            ///////РЅСЊСЋРєРѕРЅС„РёРі2
             string MyDoc = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
             string rkiu_folder = MyDoc + "\\RKIU";
             string BAT_File_Disconnect = rkiu_folder + @"\disconnect.bat";
@@ -375,17 +375,17 @@ namespace RDP
             Disconnect_Process.RedirectStandardOutput = true;
             Disconnect_Process.UseShellExecute = false;
             Disconnect_Process.CreateNoWindow = true;
-            //запуск процесса
+            //Р·Р°РїСѓСЃРє РїСЂРѕС†РµСЃСЃР°
             Process New_Disconnect_Process = Process.Start(Disconnect_Process);
-            //получить ответ
+            //РїРѕР»СѓС‡РёС‚СЊ РѕС‚РІРµС‚
             StreamReader str_incom = New_Disconnect_Process.StandardOutput;
-            //выводим результат
+            //РІС‹РІРѕРґРёРј СЂРµР·СѓР»СЊС‚Р°С‚
             Console.WriteLine(str_incom.ReadToEnd());
-            //закрыть процесс
+            //Р·Р°РєСЂС‹С‚СЊ РїСЂРѕС†РµСЃСЃ
             New_Disconnect_Process.WaitForExit();
             Console.Read();
-            ///////ньюконфиг_конец
-            MessageBox.Show("Досвидули");
+            ///////РЅСЊСЋРєРѕРЅС„РёРі_РєРѕРЅРµС†
+            MessageBox.Show("Р”РѕСЃРІРёРґСѓР»Рё");
         }
 
         private void cnct_rdp_Click(object sender, EventArgs e)
@@ -475,7 +475,7 @@ namespace RDP
                     catch
                     {
                     rdp.Visible = false;
-                    MessageBox.Show("Ошибка подключения к удаленному рабочему столу " + address.Text + "\nОшибка: Неверный пароль ", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("РћС€РёР±РєР° РїРѕРґРєР»СЋС‡РµРЅРёСЏ Рє СѓРґР°Р»РµРЅРЅРѕРјСѓ СЂР°Р±РѕС‡РµРјСѓ СЃС‚РѕР»Сѓ " + address.Text + "\nРћС€РёР±РєР°: РќРµРІРµСЂРЅС‹Р№ РїР°СЂРѕР»СЊ ", "РћС€РёР±РєР°", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         
                 }
 
@@ -508,7 +508,7 @@ namespace RDP
             catch (Exception Ex)
             {
                 rdp.Visible = false;
-                MessageBox.Show("Ошибка отключения", "Ошибка отключения от удаленного рабочего стола " + address.Text + " Ошибка:  " + Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("РћС€РёР±РєР° РѕС‚РєР»СЋС‡РµРЅРёСЏ", "РћС€РёР±РєР° РѕС‚РєР»СЋС‡РµРЅРёСЏ РѕС‚ СѓРґР°Р»РµРЅРЅРѕРіРѕ СЂР°Р±РѕС‡РµРіРѕ СЃС‚РѕР»Р° " + address.Text + " РћС€РёР±РєР°:  " + Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -517,16 +517,16 @@ namespace RDP
         private void cnct_Click(object sender, EventArgs e)
         {
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            ///////ньюконфиг
+            ///////РЅСЊСЋРєРѕРЅС„РёРі
             {
-                string MyDocs = Application.CommonAppDataPath; //Может понадобится
-                string MyDoc = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);///// Папка "Мои документы"
-                string rkiu_folder = MyDoc + "\\RKIU"; ///// Папка "Мои документы\RKIU\"
-                string PBK_File = rkiu_folder + @"\connection.pbk"; ///// Файл "Мои документы\RKIU\connection.pbk"
-                string BAT_File_Connect = rkiu_folder + @"\connection.bat"; ///// Файл "Мои документы\RKIU\connection.bat"
+                string MyDocs = Application.CommonAppDataPath; //РњРѕР¶РµС‚ РїРѕРЅР°РґРѕР±РёС‚СЃСЏ
+                string MyDoc = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);///// РџР°РїРєР° "РњРѕРё РґРѕРєСѓРјРµРЅС‚С‹"
+                string rkiu_folder = MyDoc + "\\RKIU"; ///// РџР°РїРєР° "РњРѕРё РґРѕРєСѓРјРµРЅС‚С‹\RKIU\"
+                string PBK_File = rkiu_folder + @"\connection.pbk"; ///// Р¤Р°Р№Р» "РњРѕРё РґРѕРєСѓРјРµРЅС‚С‹\RKIU\connection.pbk"
+                string BAT_File_Connect = rkiu_folder + @"\connection.bat"; ///// Р¤Р°Р№Р» "РњРѕРё РґРѕРєСѓРјРµРЅС‚С‹\RKIU\connection.bat"
                 this.Text = (rkiu_folder);
 
-                {///// Если не нашел Файл "Мои документы\RKIU\connection.pbk" то создать Папку "Мои документы\RKIU\" и Пустой файл "Мои документы\RKIU\connection.pbk" с записью нижеизложенного. (полный конфиг)
+                {///// Р•СЃР»Рё РЅРµ РЅР°С€РµР» Р¤Р°Р№Р» "РњРѕРё РґРѕРєСѓРјРµРЅС‚С‹\RKIU\connection.pbk" С‚Рѕ СЃРѕР·РґР°С‚СЊ РџР°РїРєСѓ "РњРѕРё РґРѕРєСѓРјРµРЅС‚С‹\RKIU\" Рё РџСѓСЃС‚РѕР№ С„Р°Р№Р» "РњРѕРё РґРѕРєСѓРјРµРЅС‚С‹\RKIU\connection.pbk" СЃ Р·Р°РїРёСЃСЊСЋ РЅРёР¶РµРёР·Р»РѕР¶РµРЅРЅРѕРіРѕ. (РїРѕР»РЅС‹Р№ РєРѕРЅС„РёРі)
                     if
 
                     (File.Exists(PBK_File) == false)
@@ -535,7 +535,7 @@ namespace RDP
                     StreamWriter PBK_Writer = new StreamWriter(PBK_Text);
 
 
-                    {///// Полный конфиг PBK файла.
+                    {///// РџРѕР»РЅС‹Р№ РєРѕРЅС„РёРі PBK С„Р°Р№Р»Р°.
                         PBK_Writer.WriteLine("[RKIU]");
                         PBK_Writer.WriteLine("Encoding=1");
                         PBK_Writer.WriteLine("PBVersion=1");
@@ -645,7 +645,7 @@ namespace RDP
 
 
 
-                    {///// Закрыть поток. Иначе не сохранит.
+                    {///// Р—Р°РєСЂС‹С‚СЊ РїРѕС‚РѕРє. РРЅР°С‡Рµ РЅРµ СЃРѕС…СЂР°РЅРёС‚.
                         PBK_Writer.Close();
                     }
                 }
@@ -672,47 +672,47 @@ namespace RDP
                     cnct.Enabled = false;
                     dcnct.Enabled = true;
                     ProcessStartInfo Connect_Process = new ProcessStartInfo(BAT_File_Connect);
-                    // Process Connect_Process = new Process(); ///старый коннект
+                    // Process Connect_Process = new Process(); ///СЃС‚Р°СЂС‹Р№ РєРѕРЅРЅРµРєС‚
                     Connect_Process.WindowStyle = ProcessWindowStyle.Hidden;
                     Connect_Process.RedirectStandardOutput = true;
                     Connect_Process.UseShellExecute = false;
                     Connect_Process.CreateNoWindow = true;
-                    //запуск процесса
+                    //Р·Р°РїСѓСЃРє РїСЂРѕС†РµСЃСЃР°
                     Process New_Connect_Process = Process.Start(Connect_Process);
-                    //получить ответ
+                    //РїРѕР»СѓС‡РёС‚СЊ РѕС‚РІРµС‚
                     StreamReader str_incom = New_Connect_Process.StandardOutput;
-                    //выводим результат
+                    //РІС‹РІРѕРґРёРј СЂРµР·СѓР»СЊС‚Р°С‚
                     Console.WriteLine(str_incom.ReadToEnd());
-                    //закрыть процесс
+                    //Р·Р°РєСЂС‹С‚СЊ РїСЂРѕС†РµСЃСЃ
                     New_Connect_Process.WaitForExit();
                     Console.Read();
                 }
             }
 
             //////        ProcessStartInfo psiOpt = new ProcessStartInfo(@"cmd.exe", @"/C ping ya.ru");        
-            //////// скрываем окно запущенного процесса
+            //////// СЃРєСЂС‹РІР°РµРј РѕРєРЅРѕ Р·Р°РїСѓС‰РµРЅРЅРѕРіРѕ РїСЂРѕС†РµСЃСЃР°
             //////psiOpt.WindowStyle = ProcessWindowStyle.Hidden;       
             //////psiOpt.RedirectStandardOutput = true;        
             //////psiOpt.UseShellExecute = false;      
             //////psiOpt.CreateNoWindow = true;       
-            //////// запускаем процесс
+            //////// Р·Р°РїСѓСЃРєР°РµРј РїСЂРѕС†РµСЃСЃ
             //////Process procCommand = Process.Start(psiOpt);    
-            //////// получаем ответ запущенного процесса
+            //////// РїРѕР»СѓС‡Р°РµРј РѕС‚РІРµС‚ Р·Р°РїСѓС‰РµРЅРЅРѕРіРѕ РїСЂРѕС†РµСЃСЃР°
             //////StreamReader srIncoming = procCommand.StandardOutput;      
-            //////// выводим результат
+            //////// РІС‹РІРѕРґРёРј СЂРµР·СѓР»СЊС‚Р°С‚
             //////Console.WriteLine(srIncoming.ReadToEnd());        
-            //////// закрываем процесс
+            //////// Р·Р°РєСЂС‹РІР°РµРј РїСЂРѕС†РµСЃСЃ
             //////procCommand.WaitForExit(); 
             //////Console.Read();
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            /////букап
-            ////////string MyDoc = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);///// Папка "Мои документы"
-            ////////string rkiu_folder = MyDoc + "\\RKIU"; ///// Папка "Мои документы\RKIU\"
-            ////////string PBK_File = rkiu_folder + @"\connection.pbk"; ///// Файл "Мои документы\RKIU\connection.pbk"
-            ////////string BAT_File_Connect = rkiu_folder + @"\connection.bat"; ///// Файл "Мои документы\RKIU\connection.bat"
+            /////Р±СѓРєР°Рї
+            ////////string MyDoc = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);///// РџР°РїРєР° "РњРѕРё РґРѕРєСѓРјРµРЅС‚С‹"
+            ////////string rkiu_folder = MyDoc + "\\RKIU"; ///// РџР°РїРєР° "РњРѕРё РґРѕРєСѓРјРµРЅС‚С‹\RKIU\"
+            ////////string PBK_File = rkiu_folder + @"\connection.pbk"; ///// Р¤Р°Р№Р» "РњРѕРё РґРѕРєСѓРјРµРЅС‚С‹\RKIU\connection.pbk"
+            ////////string BAT_File_Connect = rkiu_folder + @"\connection.bat"; ///// Р¤Р°Р№Р» "РњРѕРё РґРѕРєСѓРјРµРЅС‚С‹\RKIU\connection.bat"
             ////////this.Text = (rkiu_folder);
 
-            ////////{///// Если не нашел Файл "Мои документы\RKIU\connection.pbk" то создать Папку "Мои документы\RKIU\" и Пустой файл "Мои документы\RKIU\connection.pbk" с записью нижеизложенного. (полный конфиг)
+            ////////{///// Р•СЃР»Рё РЅРµ РЅР°С€РµР» Р¤Р°Р№Р» "РњРѕРё РґРѕРєСѓРјРµРЅС‚С‹\RKIU\connection.pbk" С‚Рѕ СЃРѕР·РґР°С‚СЊ РџР°РїРєСѓ "РњРѕРё РґРѕРєСѓРјРµРЅС‚С‹\RKIU\" Рё РџСѓСЃС‚РѕР№ С„Р°Р№Р» "РњРѕРё РґРѕРєСѓРјРµРЅС‚С‹\RKIU\connection.pbk" СЃ Р·Р°РїРёСЃСЊСЋ РЅРёР¶РµРёР·Р»РѕР¶РµРЅРЅРѕРіРѕ. (РїРѕР»РЅС‹Р№ РєРѕРЅС„РёРі)
             ////////    if
 
             ////////    (File.Exists(PBK_File) == false)
@@ -721,7 +721,7 @@ namespace RDP
             ////////    StreamWriter PBK_Writer = new StreamWriter(PBK_Text);
 
 
-            ////////    {///// Краткий конфиг PBK файла. Очень долгий. Каждый раз генерится полный конфиг из краткого.
+            ////////    {///// РљСЂР°С‚РєРёР№ РєРѕРЅС„РёРі PBK С„Р°Р№Р»Р°. РћС‡РµРЅСЊ РґРѕР»РіРёР№. РљР°Р¶РґС‹Р№ СЂР°Р· РіРµРЅРµСЂРёС‚СЃСЏ РїРѕР»РЅС‹Р№ РєРѕРЅС„РёРі РёР· РєСЂР°С‚РєРѕРіРѕ.
             ////////        //PBK_Writer.WriteLine("[RKIU]");
             ////////        //PBK_Writer.WriteLine("MEDIA=rastapi");
             ////////        //PBK_Writer.WriteLine("Port=VPN2-0");
@@ -731,7 +731,7 @@ namespace RDP
             ////////    }
 
 
-            ////////    {///// Полный конфиг PBK файла.
+            ////////    {///// РџРѕР»РЅС‹Р№ РєРѕРЅС„РёРі PBK С„Р°Р№Р»Р°.
             ////////        PBK_Writer.WriteLine("[RKIU]");
             ////////        PBK_Writer.WriteLine("Encoding=1");
             ////////        PBK_Writer.WriteLine("PBVersion=1");
@@ -837,7 +837,7 @@ namespace RDP
 
 
             ////////    }
-            ////////    {///// Закрыть поток. Иначе не сохранит.
+            ////////    {///// Р—Р°РєСЂС‹С‚СЊ РїРѕС‚РѕРє. РРЅР°С‡Рµ РЅРµ СЃРѕС…СЂР°РЅРёС‚.
             ////////        PBK_Writer.Close();
             ////////    }
 
@@ -897,7 +897,7 @@ namespace RDP
         private void dcnct_Click(object sender, EventArgs e)
         {
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            ///////ньюконфиг2
+            ///////РЅСЊСЋРєРѕРЅС„РёРі2
             string MyDoc = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
             string rkiu_folder = MyDoc + "\\RKIU";
             string BAT_File_Disconnect = rkiu_folder + @"\disconnect.bat";
@@ -920,18 +920,18 @@ namespace RDP
             Disconnect_Process.RedirectStandardOutput = true;
             Disconnect_Process.UseShellExecute = false;
             Disconnect_Process.CreateNoWindow = true;
-            //запуск процесса
+            //Р·Р°РїСѓСЃРє РїСЂРѕС†РµСЃСЃР°
             Process New_Disconnect_Process = Process.Start(Disconnect_Process);
-            //получить ответ
+            //РїРѕР»СѓС‡РёС‚СЊ РѕС‚РІРµС‚
             StreamReader str_incom = New_Disconnect_Process.StandardOutput;
-            //выводим результат
+            //РІС‹РІРѕРґРёРј СЂРµР·СѓР»СЊС‚Р°С‚
             Console.WriteLine(str_incom.ReadToEnd());
-            //закрыть процесс
+            //Р·Р°РєСЂС‹С‚СЊ РїСЂРѕС†РµСЃСЃ
             New_Disconnect_Process.WaitForExit();
             Console.Read();
 
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            //////букап
+            //////Р±СѓРєР°Рї
             //////Process Disconnect_Process = new Process();
             //////Disconnect_Process = new Process();
             //////Disconnect_Process.StartInfo.FileName = BAT_File_Disconnect;
@@ -952,7 +952,7 @@ namespace RDP
         private void txtUserName_SelectedIndexChanged(object sender, EventArgs e)
         {
         }
-        private AxMSTSCLib.AxMsRdpClient5 rdpClient; //для full_screen
+        private AxMSTSCLib.AxMsRdpClient5 rdpClient; //РґР»СЏ full_screen
         private void full_Click(object sender, EventArgs e)
         {
             {
@@ -1011,22 +1011,22 @@ namespace RDP
                 rdpClient.Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
                 Controls.Add(rdpClient); ((ISupportInitialize)rdpClient).EndInit();
 
-
                 
+
                 //String username = "boss";
                 //String password = "newsign147";
                 rdpClient.Server = address.Text;
                 rdpClient.UserName = login.Text;
                 IMsTscNonScriptable secured = (IMsTscNonScriptable)rdpClient.GetOcx();
                 secured.ClearTextPassword = textBox2.Text;
-               // rdpClient.AdvancedSettings2.ClearTextPassword = textBox2.Text; //старое получение пароля
+               // rdpClient.AdvancedSettings2.ClearTextPassword = textBox2.Text; //СЃС‚Р°СЂРѕРµ РїРѕР»СѓС‡РµРЅРёРµ РїР°СЂРѕР»СЏ
                 rdpClient.Domain = "COLLEGE";
                 rdpClient.FullScreen = true;
 
 
-                rdpClient.AdvancedSettings2.PerformanceFlags = 127; //графика
-                rdpClient.ColorDepth = 16; // цвета
-                rdpClient.AdvancedSettings2.ConnectToServerConsole = true; // под вопросом???
+                rdpClient.AdvancedSettings2.PerformanceFlags = 127; //РіСЂР°С„РёРєР°
+                rdpClient.ColorDepth = 16; // С†РІРµС‚Р°
+                rdpClient.AdvancedSettings2.ConnectToServerConsole = true; // РїРѕРґ РІРѕРїСЂРѕСЃРѕРј???
 
 
 
@@ -1047,13 +1047,14 @@ namespace RDP
                 rdpClient.AdvancedSettings4.PinConnectionBar = false;
                 //rdpClient.AdvancedSettings4.DisplayConnectionBar = false; 
                 
-               
+                
+                //rdpClient.FullScreenTitle = "111";
                 //////////////////////////////////////////////////////////////////////////////////
                 // rdpClient.Size = new System.Drawing.Size(screenSize.Size.Width, screenSize.Size.Height);
 
-                rdpClient.AdvancedSettings6.AuthenticationLevel = 0; //уровень проверки сертефиката
+                rdpClient.AdvancedSettings6.AuthenticationLevel = 0; //СѓСЂРѕРІРµРЅСЊ РїСЂРѕРІРµСЂРєРё СЃРµСЂС‚РµС„РёРєР°С‚Р°
                 rdpClient.Connect();
-                rdpClient.Visible = false;                // ГИПЕР КОСТЫЛЬ, надеюсь временно
+                rdpClient.Visible = false;                // Р“РРџР•Р  РљРћРЎРўР«Р›Р¬, РЅР°РґРµСЋСЃСЊ РІСЂРµРјРµРЅРЅРѕ
                 //rdp.Visible = false;                    //????
                 ///////////////////////////
                 this.Width = 805;
@@ -1065,11 +1066,11 @@ namespace RDP
                 dcnct_rdp.Visible = false;
                 /////
 
-                                            //скрыть белоеполотно!!!
+                                            //СЃРєСЂС‹С‚СЊ Р±РµР»РѕРµРїРѕР»РѕС‚РЅРѕ!!!
             }
             catch
             {
-                MessageBox.Show("Ошибка подключения к удаленному рабочему столу " + address.Text + "\nОшибка: Неверный пароль ", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("РћС€РёР±РєР° РїРѕРґРєР»СЋС‡РµРЅРёСЏ Рє СѓРґР°Р»РµРЅРЅРѕРјСѓ СЂР°Р±РѕС‡РµРјСѓ СЃС‚РѕР»Сѓ " + address.Text + "\nРћС€РёР±РєР°: РќРµРІРµСЂРЅС‹Р№ РїР°СЂРѕР»СЊ ", "РћС€РёР±РєР°", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
 
@@ -1117,7 +1118,7 @@ namespace RDP
             //}
 
 
-            //фулл скрин
+            //С„СѓР»Р» СЃРєСЂРёРЅ
             ////////////////////////////////////////////////////////////////////////
             //////////////////String username = "boss";
             //////////////////    String password = "newsign147";
